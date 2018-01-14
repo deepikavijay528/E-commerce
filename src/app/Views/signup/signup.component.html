@@ -1,0 +1,33 @@
+<div class="container">
+     <form class="form width-100" #form="ngForm" (ngSubmit)="form.valid && onClick(form.value,form.valid)">
+         <input type="text" class="form-control" required [(ngModel)]="user.name" #name="ngModel" name="name"  placeholder="Enter Your Name">
+          <span class="f-red" *ngIf="name.errors && name.errors.required && name.touched">
+           Name is required
+          </span>
+          
+         <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" required [(ngModel)]="user.email" #email="ngModel" name="email" placeholder="Enter Email">
+         <span class="f-red" *ngIf="email.errors && email.errors.required && email.touched">
+            Email is required
+           </span>
+           <span class="f-red" *ngIf="email.errors && email.errors.pattern">
+            Email is invalid
+           </span>
+         <input type="text" class="form-control" minlength="5" maxlength="25" required [(ngModel)]="user.address" #address="ngModel" name="address" placeholder="Enter Address">
+         <span class="f-red" *ngIf="address.errors && address.errors.required && address.touched">
+            Address is required
+           </span>
+           <span class="f-red" *ngIf="address.errors && address.errors.minlength">
+            Address is invalid
+           </span>
+         <input type="password" class="form-control"  pattern="^[a-zA-Z0-9]*$" required [(ngModel)]="user.password" #password="ngModel" name="password" placeholder="Password">
+         <span class="f-red" *ngIf="password.errors && password.errors.required && password.touched">
+            Password is required
+           </span>
+           <span class="f-red" *ngIf="password.errors && password.errors.pattern">
+            Password is invalid
+           </span>
+         <button class="form-control" type="submit">Sign Up</button>
+      </form>
+     
+   
+   </div>
