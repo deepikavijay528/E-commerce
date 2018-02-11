@@ -17,6 +17,7 @@ export class AddItemComponent implements OnInit {
   user:any;
   image:any;
   firebasestorage:any;
+  
 
   constructor(private db: AngularFireDatabase,firebaseApp: FirebaseApp) {
     this.firebasestorage=firebaseApp.storage();
