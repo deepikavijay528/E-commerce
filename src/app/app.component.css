@@ -1,3 +1,6 @@
 html{
     background-color: #1ABC9C;
 }
+.mat-dialog-container {
+    padding: 0px!important;
+  }

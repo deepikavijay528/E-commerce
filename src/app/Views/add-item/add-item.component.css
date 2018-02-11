@@ -1,0 +1,26 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+.detail {
+  background-color: teal;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  padding: 20px;
+  margin: 0 0 24px 0;
+}
+.mat-dialog-container {
+  padding: 0px!important;
+}
+.m-t-20{
+  margin-top: 5%;
+  background-color: forestgreen;
+  height: 41px;
+  color: white;
+  width: 100%;
+}

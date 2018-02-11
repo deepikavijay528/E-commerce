@@ -1,0 +1,39 @@
+
+<div class="detail">Add Details</div>
+<form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.valid)">
+
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput type="text" name="name" [(ngModel)]="user.name" #name="ngModel" required minlength="5" placeholder="Enter Name">
+    
+
+    </mat-form-field>
+    <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+      Name is required (minimum 5 characters).
+    </small>
+
+     <mat-form-field>
+      <input matInput type="text" name="address" [(ngModel)]="user.address" #address="ngModel" required minlength="25" placeholder="Enter Address">
+     
+   </mat-form-field>
+       <small [hidden]="address.valid || (address.pristine && !f.submitted)">
+      Address is required (minimum 25 characters).
+    </small>
+
+
+    <mat-form-field>
+      <input matInput type="text" name="contact" [(ngModel)]="user.contact" #contact="ngModel" required minlength="10" placeholder="Enter Contact">
+    
+    </mat-form-field>
+    <small [hidden]="contact.valid || (contact.pristine && !f.submitted)">
+      contact is required (minimum 10 characters).
+    </small>
+
+    <!-- <mat-form-field> -->
+        <!-- <input type="file" name="image" [(ngModel)]="user.image" #image="ngModel" required> -->
+        <image-upload (uploadFinished)="onUploadFinished($event)"></image-upload>
+      <!-- </mat-form-field> -->
+    <button mat-raised-button type="submit" class="m-t-20">Submit</button>
+
+  </div>
+</form>

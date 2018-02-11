@@ -27,7 +27,7 @@ export class LoginComponent
   }
   signin(value,valid){
     firebase.auth().signInWithEmailAndPassword(value.email, value.password).then(success => {
-      this.rt.navigate(['signup']);
+      this.rt.navigate(['home']);
     })
     .catch(function(error) {
       // Handle Errors here.
