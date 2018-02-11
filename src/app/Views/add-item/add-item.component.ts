@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Form} from '@angular/forms';
 import { FirebaseApp } from 'angularfire2';
-
+import 'firebase/storage';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -17,8 +17,9 @@ export class AddItemComponent implements OnInit {
   user:any;
   image:any;
   firebasestorage:any;
- constructor(private db: AngularFireDatabase, fbApp: FirebaseApp) {
-    this.firebasestorage = fbApp.storage();
+
+  constructor(private db: AngularFireDatabase,firebaseApp: FirebaseApp) {
+    this.firebasestorage=firebaseApp.storage();
    }
 
   ngOnInit() {
