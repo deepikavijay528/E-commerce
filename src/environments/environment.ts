@@ -10,7 +10,7 @@ export const environment = {
     authDomain: "e-commerce-f040e.firebaseapp.com",
     databaseURL: "https://e-commerce-f040e.firebaseio.com",
     projectId: "e-commerce-f040e",
-    storageBucket: "",
+    storageBucket: "gs://e-commerce-f040e.appspot.com",
     messagingSenderId: "984920685091"
   }
  

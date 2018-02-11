@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Form} from '@angular/forms';
-
 import { FirebaseApp } from 'angularfire2';
 
 import * as firebase from 'firebase/app';
+import 'firebase/storage';
 import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'app-add-item',
@@ -16,29 +16,33 @@ export class AddItemComponent implements OnInit {
   contact:string;
   user:any;
   image:any;
-  constructor(private db: AngularFireDatabase,@Inject(FirebaseApp) firebaseApp: any) { }
+  firebasestorage:any;
+ constructor(private db: AngularFireDatabase, fbApp: FirebaseApp) {
+    this.firebasestorage = fbApp.storage();
+   }
 
   ngOnInit() {
     this.user = {
       name: '',
       address:'',
       contact:'',
-      image:''
+      image:'',
+      imageurl:''
     };
   }
   onUploadFinished(event){
 console.log("event",event);
 this.user.image=event.src;
-let storageRef = FirebaseApp.storage().ref();
+let storageRef = this.firebasestorage.ref();
 // Create a timestamp as filename
 const filename = Math.floor(Date.now() / 1000);
 
 // Create a reference to 'images/todays-date.jpg'
 const imageRef = storageRef.child(`images/${filename}.jpg`);
 
-imageRef.putString(this.user.image, FirebaseApp.storage.StringFormat.DATA_URL).then((snapshot)=> {
+imageRef.putString(this.user.image, 'data_url').then((snapshot)=> {
  // Do something here when the data is succesfully uploaded!
- console.log(snapshot);
+ this.user.imageurl=snapshot.downloadURL;
 });
 
 
@@ -49,8 +53,13 @@ imageRef.putString(this.user.image, FirebaseApp.storage.StringFormat.DATA_URL).t
 
   save(value,valid){
     console.log(value);
-    const itemRef = this.db.object('UserDetail');
-    itemRef.set({ name: value.name,});
+    const itemRef = this.db.list('Products');
+    itemRef.push({ name: value.name,image:this.user.imageurl,address:value.address,contact:value.contact});
+    
+    
+      
+    
+  
    // this.usedetail.push({'user':this.user.email,'password':this.user.password,'address':this.user.address,'contact':this.user.contact});
    // this.rt.navigate(['home',{'user':this.user.email,'password':this.user.password,'address':this.user.address,'contact':this.user.contact}]);
 

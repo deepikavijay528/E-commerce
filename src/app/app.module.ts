@@ -42,4 +42,6 @@ import { ImageUploadModule } from "angular2-image-upload";
   providers: [MatDialog],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

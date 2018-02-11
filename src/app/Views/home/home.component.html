@@ -14,3 +14,9 @@
     You chose: <i>{{animal}}</i>
   </li>
 </ol> 
+<ul>
+  <li *ngFor="let item of product | async">
+     {{ item.address }}
+     <img src={{item.image}} height="100" width="100"/>
+  </li>
+</ul>
